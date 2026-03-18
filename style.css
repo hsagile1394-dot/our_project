@@ -4,6 +4,7 @@ body{
   padding:30px;
   max-width:1100px;
   margin:auto;
+  font-weight: bold;
 }
 
 /* タイトル */
@@ -166,9 +167,10 @@ input[type="checkbox"]:checked{
 /* 結果 */
 #result{
   font-size:20px;
-  text-align:center;
+  text-align:left;
   background:linear-gradient(135deg,#ffffff,#f8fbff);
   border-left:6px solid #3498db;
+  font-weight: 900;
 }
 
 /* 金額強調 */
