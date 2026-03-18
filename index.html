@@ -1,9 +1,33 @@
+
+
+</body>
+</html> 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <title>飲み会精算アプリ</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: center;
+}
+button {
+  margin: 5px;
+}
+</style>
+
 </head>
 
 <body>
@@ -12,44 +36,52 @@
 
 <div class="settings">
 
+  <input type="hidden" id="maxMembers" value="100">
 
-<select id="maxMembers">
-<!-- <option value="10">10</option>
-<option value="20" >20</option>
-<option value="50">50</option> -->
-<option value="100" selected>100</option>
-</select>
+  <label>合計金額</label>
+  <input type="number" id="totalAmount" placeholder="例: 50000">
 
-<label>合計金額</label>
-<input type="number" id="totalAmount" placeholder="例: 50000">
+  <label>丸め単位</label>
+  <select id="roundUnit">
+    <option value="1">1円</option>
+    <option value="10">10円</option>
+    <option value="100" selected>100円</option>
+    <option value="500">500円</option>
+    <option value="1000">1000円</option>
+  </select>
 
-<label>丸め単位</label>
-<select id="roundUnit">
-<option value="1">1円</option>
-<option value="10">10円</option>
-<option value="100" selected>100円</option>
-<option value="1000">1000円</option>
-</select>
+  <label>
+    <input type="checkbox" id="useCommFee">
+    管理職コミュニケーション促進費を使用 (3,000円×人数)
+  </label>
 
 </div>
 
 <h2>メンバー</h2>
 
+<div class="member-controls">
+  <button id="selectAllGeneral">一般費 全選択</button>
+  <button id="deselectAllGeneral">一般費 全解除</button>
+</div>
+
 <table id="memberTable">
-<thead>
-<tr>
-<th>名前</th>
-<th>役職</th>
-<th>支払額</th>
-</tr>
-</thead>
-<tbody id="memberBody"></tbody>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>役職</th>
+      <th>幹事</th>
+      <th>一般コミュニケーション費</th>
+      <th>支払額</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody id="memberBody"></tbody>
 </table>
 
 <button id="addMember">メンバー追加</button>
 
 <div class="actions">
-<button id="calculate">計算する</button>
+  <button id="calculate">計算する</button>
 </div>
 
 <h2>結果</h2>
