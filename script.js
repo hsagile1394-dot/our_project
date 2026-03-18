@@ -124,6 +124,11 @@ function calculate() {
 
     if(isOrganizer) organizerIndex = index;
 
+      // ⭐ 名前未入力チェックを追加
+    if (!name.trim()) {
+      alert("メンバーを入力してください");
+      return;
+    }
     members.push({
       name: name || "未入力",
       role: role,
